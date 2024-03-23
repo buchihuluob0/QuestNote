@@ -1,0 +1,8 @@
+## Interface: 11501
+## Title: QuestNote
+## Notes: A simple note taking addon for quests.
+## Author: Codelee
+## Version: 1.0.0
+## SavedVariables: QuestNotice_Comment
+
+QuestNote.xml
