@@ -92,7 +92,8 @@ end
 
 -- 小队通报模块
 local broad = q:NewModule("Broadcast","AceEvent-3.0")
-local FastQuestInfo = nil;
+broad:Enable()
+local FastQuestInfo = true;
 local FastQuestTable = {};
 
 local function BFQuest_GetTable()
@@ -174,42 +175,3 @@ end
 function broad:OnDisable()
 	self:UnregisterAllEvents()
 end
-
-function Auto_FastQuestInfo(arg)
-	FastQuestInfo=arg
-end
-
-
--- 开启插件命令
-local function EnableAddon()
-    if not q:IsEnabled() then
-        q:Enable()
-        print("QuestNote插件已启用")
-    else
-        print("QuestNote插件已经处于启用状态")
-    end
-end
-
--- 关闭插件命令
-local function DisableAddon()
-    if q:IsEnabled() then
-        q:Disable()
-        print("QuestNote插件已禁用")
-    else
-        print("QuestNote插件已经处于禁用状态")
-    end
-end
-
--- 注册 slash 命令
-SlashCmdList["QUESTNOTE"] = function(msg)
-    if msg == "开启" then
-        EnableAddon()
-        broad:OnEnable()  -- 手动调用 OnEnable() 方法
-    elseif msg == "关闭" then
-        DisableAddon()
-        broad:OnDisable()  -- 手动调用 OnDisable() 方法
-    else
-        print("无效的命令。使用 /note 开启 来启用插件，使用 /note 关闭 来禁用插件。")
-    end
-end
-SLASH_QUESTNOTE1 = "/note"
